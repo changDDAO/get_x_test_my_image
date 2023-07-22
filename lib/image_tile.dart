@@ -9,17 +9,49 @@ class ImageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.blue,
       elevation: 2,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Container(
-        height: 200,
-        width: 200,
-        child: Image.network(imageFile.imageLink,
-        fit: BoxFit.fill,),
+        child: Expanded(
+          child: Row(
+            children: [
 
+
+              Container(
+                  height: 75,
+                  width: 100,
+                  color: Colors.white,
+                  child: Image.network(imageFile.imageLink,
+                  fit: BoxFit.fill),
+                ),
+
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('image id : ${imageFile.id}',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400
+                  ),),
+                  Text('image saved_path : ${imageFile.savedPath}',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w400
+                    ),),
+                  Text('image link : ${imageFile.imageLink}',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w400
+                    ),),
+                ],
+              )
+            ],
+          ),
         ),
-
       ),
     );
   }

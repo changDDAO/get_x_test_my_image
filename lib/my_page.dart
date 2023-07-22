@@ -16,11 +16,11 @@ class MyPage extends StatelessWidget {
         leading: Icon(Icons.menu),
         actions: [
           IconButton(
-              onPressed: (){},
+              onPressed: () {},
               icon: Icon(Icons.view_list_rounded)
           ),
           IconButton(
-            onPressed: (){},
+            onPressed: () {},
             icon: Icon(Icons.shopping_cart),
           ),
         ],
@@ -28,20 +28,23 @@ class MyPage extends StatelessWidget {
       body: Container(
         child: Padding(
           padding: EdgeInsets.fromLTRB(0, 16, 0, 16),
-          child: Obx(()=> ListView.builder(
-            itemCount: controller.imageList.length,
+          child: Obx(()=> GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+            ),
             itemBuilder: (context, index){
               return ImageTile(
                 controller.imageList[index],
               );
             },
-
+            itemCount: controller.imageList.length,
           ),
           ),
         ),
 
       ),
-
     );
   }
 }
